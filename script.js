@@ -92,11 +92,11 @@ document.getElementById("OrderForm").addEventListener("submit", function(event) 
     let output = document.getElementById("output");
 
     if (name === "" || service === "" || !Number.isFinite(hours) || hours <= 0) {
-        output.innerHTML = "Please enter a valid name, service and positive number of hours.";
+        output.innerHTML = "Please enter a valid name.";
         return;
     }
 
-    output.innerHTML = "Booking submitted successfully.";
+    output.innerHTML = "Order is a success.";
 });
  
 
@@ -108,29 +108,29 @@ document.getElementById("OrderForm").addEventListener("submit", function(event) 
 //It is sufficient for the button to perform this one status change//
 
 let bookings = [
-    { id: 1, customer: "John", serviceType: "Cleaning", hours: 2, status: "Confirmed" },
-    { id: 2, customer: "Sarah", serviceType: "Repair", hours: 3, status: "Pending" },
-    { id: 3, customer: "Mike", serviceType: "Cleaning", hours: 1, status: "Confirmed" },
-    { id: 4, customer: "Lisa", serviceType: "Consultation", hours: 2, status: "Cancelled" }
+    { id: 1, customer: "John", productname: "Handy Andy", finalTotal: 2, status: "Confirmed" },
+    { id: 2, customer: "Sarah", productname: "Repair", finalTotal: 3, status: "Pending" },
+    { id: 3, customer: "Mike", productname: "Cleaning", finalTotal: 1, status: "Confirmed" },
+    { id: 4, customer: "Lisa", productname: "Consultation", finalTotal: 2, status: "Cancelled" }
 ];
 
-function displayBookings(list) {
-    document.getElementById("output").innerHTML = list.map(function(booking) {
-        return booking.id + " - " + booking.customer + " - " +
-               booking.serviceType + " - " + booking.hours + " hours - " +
-               booking.status;
+function displayOrders(list) {
+    document.getElementById("output").innerHTML = list.map(function(order) {
+        return order.id + " - " + booking.customer + " - " +
+               order.serviceType + " - " + booking.hours + " hours - " +
+               order.status;
     }).join("<br>");
 }
 
-function filterBookings(value) {
-    let filtered = bookings.filter(function(booking) {
-        return booking.status === value || booking.serviceType === value;
+function filterOrders(value) {
+    let filtered = displayOrders.filter(function(booking) {
+        return order.status === value || order.serviceType === value;
     });
 
-    displayBookings(filtered);
+    displayOrders(filtered);
 }
 
-displayBookings(bookings);
+displayOrders(orders);
 
 
 //Order filtering, testing and debugging//
@@ -141,6 +141,28 @@ displayBookings(bookings);
 // Run and record at least three tests: one normal order, one member order and one invalid order or status-filter case. //
 // Compare the expected and actual result and correct any defect found.//
 
+console.log("Testing started");
+
+debugger;
+
+function testOrders(orders,status) {
+    if (orders <= 0) {
+        console.log("Too Little Orders");
+        return;
+    }
+
+    let cost = hours * 200;
+
+    if (urgent) {
+        cost = cost * 1.15;
+    }
+
+    console.log("cost: R" + cost.toFixed(2));
+}
+
+testOrders(2, false); // Normal 
+testOrders(2, true);  // Urgent 
+testOrders(0, false); // Invalid 
 
 
 

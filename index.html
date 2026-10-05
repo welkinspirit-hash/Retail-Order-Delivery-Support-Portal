@@ -11,22 +11,25 @@
     <h1>Order Form</h1>
 
     <form id="orderForm">
-        <input id="name" type="text" placeholder="Customer name">
+        <input id="name" name="customerName">
+        
 
-        <select id="service">
-            <option>customer name</option>
-            <option>product name</option>
-            <option>quantity</option>
-            <option>unit price</option>
-            <option>member status</option>
-            <option>delivery type</option>
-        </select>
+        <select id="service" name="service">
+            <option value="customer">customername</option>
 
-        <input id="Order" type="number" placeholder="Number of Orders">
+            option> 
+            <option value="product">product name</option>
+             <option value="quantity">quantity</option>
+              <option value="unitPrice">unit price</option>
+               <option value="status">member status</option>
+                <option value="delivery">delivery type</option>
+            </select>
 
-    
+        <input id="OrderCount" name="orderCount" 
+        type="number" placeholder="Number of Orders">
+        
 
-        <button type="submit">Book</button>
+    <button type="submit">Book</button>
     </form>
 
     <div id="output"></div>
